@@ -27,6 +27,10 @@ resource "aws_iam_role" "ec2_s3_access" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "ec2_full_access_attachment" {
+  role       = aws_iam_role.ec2_s3_access.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}
 
 # Output the access key and secret key
 output "aws_terraform_user_access_key_id" {
