@@ -29,10 +29,10 @@ resource "aws_iam_role" "ec2_s3_access" {
 
 
 # Output the access key and secret key
-output "awscliuser_access_key_id" {
+output "aws_terraform_user_access_key_id" {
   value = aws_iam_access_key.aws_terraform_user_access_key.id
 }
 
-output "awscliuser_secret_access_key" {
+output "aws_terraform_user_secret_access_key" {
   value = aws_iam_access_key.aws_terraform_user_access_key.secret
 }
