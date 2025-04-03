@@ -11,7 +11,7 @@ resource "aws_iam_access_key" "aws_terraform_user_access_key" {
   user = aws_iam_user.aws_terraform_user.name
 }
 
-resource "aws_iam_role" "ec2_s3_access" {
+resource "aws_iam_role" "ec2_s3_access_vamsee" {
   name = "ec2-s3-access"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
