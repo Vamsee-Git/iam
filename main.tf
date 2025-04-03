@@ -35,8 +35,10 @@ resource "aws_iam_role_policy_attachment" "ec2_full_access_attachment" {
 # Output the access key and secret key
 output "aws_terraform_user_access_key_id" {
   value = aws_iam_access_key.aws_terraform_user_access_key.id
+  sensitive = false
 }
 
 output "aws_terraform_user_secret_access_key" {
   value = aws_iam_access_key.aws_terraform_user_access_key.secret
+  sensitive = false
 }
