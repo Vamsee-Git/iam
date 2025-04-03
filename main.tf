@@ -11,17 +11,19 @@ resource "aws_iam_access_key" "aws_terraform_user_access_key" {
   user = aws_iam_user.aws_terraform_user.name
 }
 
-resource "aws_iam_role" "ec2_s3_access" {
-  name = "ec2-s3-access_vamsee"
-  assume_role_policy = jsonencode({
+resource "aws_iam_role_policy" "ec2_s3_access_policy" {
+  name   = "EC2S3AccessPolicy"
+  role   = aws_iam_role.ec2_s3_access.id
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
         Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject"
+        ]
+        Resource = "*"
       }
     ]
   })
